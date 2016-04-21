@@ -1,3 +1,7 @@
+/**
+ * Created by Ethan on 4/11/2016.
+ * MainActivity listens to the accelerometer and updates the view accordingly
+ */
 package com.example.ethan.level;
 
 import android.content.pm.ActivityInfo;
@@ -9,7 +13,7 @@ import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.Surface;
+
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -20,14 +24,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //create the view with ball and numbers
         view = new LevelView(this);
         setContentView(view);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        //create sensor objects
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
+        //get size of display
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     public void onSensorChanged(SensorEvent event) {
-
+        //when accelerometer values change, redraw the view
         if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
             return;
         view.x=(event.values[0]);
