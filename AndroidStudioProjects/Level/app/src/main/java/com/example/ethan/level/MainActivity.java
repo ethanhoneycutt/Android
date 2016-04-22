@@ -4,6 +4,7 @@
  */
 package com.example.ethan.level;
 
+import android.app.ActionBar;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.hardware.Sensor;
@@ -13,6 +14,7 @@ import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Window;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         view = new LevelView(this);
         setContentView(view);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.getSupportActionBar().hide();
         //create sensor objects
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

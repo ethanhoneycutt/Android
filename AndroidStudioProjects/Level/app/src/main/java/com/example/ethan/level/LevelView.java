@@ -50,7 +50,8 @@ public class LevelView extends View
         ballx=100 + (x+10)/20*(width - 200);
         bally=100;
         canvas.drawCircle(ballx, bally, radius, paint);
-        canvas.drawText(Integer.toString(Math.round(x / 10 * 90)), 250, width, paint);
+        canvas.drawText(Integer.toString(Math.round(x / 10 * 90)), 250, width + 25, paint);
+        canvas.drawText("X", 250, width + 75, paint);
 
         if(Math.round(y / 10 * 90) < 10 && Math.round(y / 10 * 90) > -10){
             paint.setColor(Color.GREEN);
@@ -61,7 +62,8 @@ public class LevelView extends View
         ballx=100;
         bally=250 + (-y+10)/20*(width - 200);
         canvas.drawCircle(ballx, bally, radius, paint);
-        canvas.drawText(Integer.toString(Math.round(y / 10 * 90)), 350, width, paint);
+        canvas.drawText(Integer.toString(Math.round(y / 10 * 90)), 375, width + 25, paint);
+        canvas.drawText("Y", 375, width + 75, paint);
 
         if(Math.round(x / 10 * 90) < 10 && Math.round(x / 10 * 90) > -10 && Math.round(y / 10 * 90) < 10 && Math.round(y / 10 * 90) > -10){
             paint.setColor(Color.GREEN);
@@ -79,7 +81,8 @@ public class LevelView extends View
         else{
             paint.setColor(Color.RED);
         }
-        canvas.drawText(Integer.toString(Math.round(z/10*90)), 450, width, paint);
+        canvas.drawText(Integer.toString(Math.round(z/10*90)), 500, width + 25, paint);
+        canvas.drawText("Z", 500, width + 75, paint);
 
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.BLACK);
@@ -93,6 +96,9 @@ public class LevelView extends View
         ballx=100;
         bally=250 + (width - 200)/2;
         canvas.drawCircle(ballx,bally, radius, paint);
+
+        paint.setColor(Color.WHITE);
+        canvas.drawText("Level Angles (Degrees)", 75, width + 200, paint);
     }
 
 }
